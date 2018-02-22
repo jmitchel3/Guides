@@ -69,9 +69,16 @@ Adapted from [Official Docs](https://www.raspberrypi.org/learning/software-guide
     - via Wifi (look for wlan0 below)
     - via Ethernet (look for eth0 below)
 
-4. Open up `Terminal` and type `ifconfig`. You should see the following result:
-
+4. Get the IP Address of your PI:
+    In `Terminal` type:
     ```
+    $ hostname -I
+    192.168.0.10
+    ```
+    The `192.168.0.10` is your IP address for the next steps. Make note of it. Another way to grab the IP address is to:
+    
+    ```
+    $ ifconfig
     eth0      Link encap:Ethernet  HWaddr b8:27:eb:49:e9:1d  
               inet6 addr: fe80::20f:eaff:fe91:407/64 Scope:Link
               UP BROADCAST MULTICAST  MTU:1500  Metric:1
@@ -100,11 +107,20 @@ Adapted from [Official Docs](https://www.raspberrypi.org/learning/software-guide
               RX bytes:11994051 (11.4 MiB)  TX bytes:1072259 (1.0 MiB)
 
     ```
-    You'll need to find this line `inet addr:192.168.0.10  Bcast:192.168.0.255  Mask:255.255.255.0`
+    Notice the line `inet addr:192.168.0.10  Bcast:192.168.0.255  Mask:255.255.255.0`
 
     The numbers `192.168.0.10` are your IP Address (`<ip>`)
-
-5. SSH into your Pi with `ssh pi@<ip>`:
+5. Activate SSH In your Pi:
+    Open terminal
+    ```
+    $ sudo raspi-config
+    ```
+    Select `Interfacing Options`
+    Select `SSH`
+    Enable SSH by selecting `YES`
+    Go to `Finish`
+    
+6. SSH into your Pi with `ssh pi@<ip>`:
 
     Mac/Linux Users (non-Pi linux):
     
